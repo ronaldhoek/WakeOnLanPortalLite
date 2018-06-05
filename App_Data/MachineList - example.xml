@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMachine xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Machine>
+    <Name>PC1 (Desktop)</Name>
+    <MAC>00-00-00-00-00-01</MAC>
+    <IP/>
+    <Broadcast>255.255.255.255</Broadcast>
+    <Netbios>pc1.domain.xxx</Netbios>
+    <Method>0</Method>
+    <Emergency>true</Emergency>
+    <ShutdownCommand/>
+    <Group>Desktops</Group>
+    <UDPPort>9</UDPPort>
+    <TTL>128</TTL>
+    <Adapter/>
+    <RDPPort>3389</RDPPort>
+    <ShutdownMethod>WMI</ShutdownMethod>
+  </Machine>
+  <Machine>
+    <Name>PC2 (Laptop)</Name>
+    <MAC>00-00-00-00-00-02</MAC>
+    <IP/>
+    <Broadcast>255.255.255.255</Broadcast>
+    <Netbios>pc2.domain.xxx</Netbios>
+    <Method>0</Method>
+    <Emergency>true</Emergency>
+    <ShutdownCommand/>
+    <Group>Desktops</Group>
+    <UDPPort>9</UDPPort>
+    <TTL>128</TTL>
+    <Adapter/>
+    <RDPPort>3389</RDPPort>
+    <ShutdownMethod>WMI</ShutdownMethod>
+  </Machine>
+  
+
+
+  
+
+
+
+</ArrayOfMachine>
