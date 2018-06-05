@@ -5,7 +5,7 @@ Based on the heavier version of WakeOnLanPortal, but without login pages and LDA
 https://github.com/ronaldhoek/WakeOnLanPortal
 
 # Library usage
-This project uses the Aquila Technology WakeOnLan library
+This project uses the Aquila Technology WakeOnLan library (WOL.dll)
 * Homepage: https://wol.aquilatech.com/
 * Source: https://github.com/basildane/WakeOnLAN/
 
