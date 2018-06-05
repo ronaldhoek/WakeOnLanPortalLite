@@ -2,7 +2,7 @@
 Webbased portal using WakeOnLan library
 
 Based on the heavier version of WakeOnLanPortal, but without authenticatie/login pages:
-https://github.com/ronaldhoek/WakeOnLAN
+https://github.com/ronaldhoek/WakeOnLanPortal
 
 This project is based on the Aquila Technology WakeOnLan library
 Homepage: http://aquilawol.sourceforge.net/
