@@ -1,13 +1,16 @@
 # WakeOnLanPortal LITE
 Webbased portal using WakeOnLan library
 
-Based on the heavier version of WakeOnLanPortal, but without authenticatie/login pages:
+Based on the heavier version of WakeOnLanPortal, but without login pages and LDAP support:
 https://github.com/ronaldhoek/WakeOnLanPortal
 
-This project is based on the Aquila Technology WakeOnLan library
-Homepage: http://aquilawol.sourceforge.net/
-Download: http://sourceforge.net/projects/aquilawol/files/Library/
+# Library usage
+This project uses the Aquila Technology WakeOnLan library (WOL.dll)
+* Homepage: https://wol.aquilatech.com/
+* Source: https://github.com/basildane/WakeOnLAN/
 
-Please create your own 'machines.xml' file bases on the sample.
-(or use the AquilaWOL application to create one)
-Download: http://sourceforge.net/projects/aquilawol/files/WakeOnLAN%202.x/
+# Configuration
+Please create your own 'machines.xml' file bases on the sample (or use the AquilaWOL application to create one).
+* Download: https://github.com/basildane/WakeOnLAN/releases/
+
+To limit the usage of the WakeOnLan Portal, please configure IIS secutiry settings to use Windows of Basic authentication.
