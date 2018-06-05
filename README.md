@@ -4,6 +4,8 @@ Webbased portal using WakeOnLan library
 Based on the heavier version of WakeOnLanPortal, but without login pages and LDAP support:
 https://github.com/ronaldhoek/WakeOnLanPortal
 
+![image](ScreenShot.png)
+
 # Library usage
 This project uses the Aquila Technology WakeOnLan library (WOL.dll)
 * Homepage: https://wol.aquilatech.com/
