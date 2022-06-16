@@ -32,11 +32,4 @@
     <RDPPort>3389</RDPPort>
     <ShutdownMethod>WMI</ShutdownMethod>
   </Machine>
-  
-
-
-  
-
-
-
 </ArrayOfMachine>
