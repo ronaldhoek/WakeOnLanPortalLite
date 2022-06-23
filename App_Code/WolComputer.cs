@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using System.Web;
 
 /// <summary>
@@ -8,7 +7,6 @@ using System.Web;
 /// </summary>
 public class Machine
 {
-    private string name = "";
     private string netbiosname = "";
     private string macaddress;
     private bool pinging;
@@ -48,27 +46,21 @@ public class Machine
 
     public Machine()
     {
-        //
-        // TODO: Add constructor logic here
-        //
     }
-    public Machine(string Netbios, string MacAddress)
+
+    public Machine(string NetbiosName, string MacAddress)
     {
-        netbiosname = Netbios;
-        macaddress = MacAddress;
+        Netbios = NetbiosName;
+        MAC = MacAddress;
         PingASync();
     }
 
-    public string Name
-    {
-        get { return name; }
-        set { name = value; }
-    }
+    public string Name { get; set;  }
 
     public string Netbios
     {
         get { return netbiosname; }
-        set 
+        set
         {
             if (!netbiosname.Equals(value, StringComparison.CurrentCultureIgnoreCase))
             {
@@ -76,7 +68,7 @@ public class Machine
                 {
                     netbiosname = value;
                 }
-                lastpingresult = 0; 
+                lastpingresult = 0;
             }
         }
     }
@@ -119,10 +111,10 @@ public class Machine
     }
 
     /// <summary>
-    ///     Voert in PING opdracht uit naar de aangegeven Host PC
+    /// Voert een PING opdracht uit naar de aangegeven Host PC
     /// </summary>
     /// <returns>
-    ///     Tijd in miliseconden, van de ping (indien '0', dan is ping niet gelukt)
+    /// Tijd in miliseconden, van de ping (indien '0', dan is ping niet gelukt)
     /// </returns>
     public long Ping()
     {
@@ -135,15 +127,14 @@ public class Machine
 
 
     /// <summary>
-    ///     Voert in PING opdracht asynchroon uit naar de aangegeven Host PC
-    ///     Via het event kan het resultaat worden verwerkt
+    /// Voert in PING opdracht asynchroon uit naar de aangegeven Host PC
+    /// Via het event kan het resultaat worden verwerkt
     /// </summary>
     public void PingASync()
     {
         if (netbiosname.Length > 0)
         {
-            System.Threading.Thread pingthread = new System.Threading.Thread(
-                    new System.Threading.ThreadStart(internalping));
+            var pingthread = new Thread(new ThreadStart(internalping));
             pinging = true;
             pingthread.Start();
         }
@@ -173,7 +164,7 @@ public class MachineList
         // Wait for pings to finish
         foreach (Machine c in list)
         {
-            while(c.Pinging) { System.Threading.Thread.Sleep(10); }
+            while(c.Pinging) { Thread.Sleep(10); }
         }
 
         return list;
