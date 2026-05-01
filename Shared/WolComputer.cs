@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading;
-using System.Web;
 
 /// <summary>
 /// Machine object
@@ -148,7 +147,7 @@ public class MachineList
     {
         // Mogelijk machines uitlezen uit XML-bestand
         System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(typeof(Machine[]));
-        System.IO.FileStream f = new System.IO.FileStream(HttpContext.Current.Server.MapPath(@"~\App_Data\MachineList.xml"), System.IO.FileMode.Open, System.IO.FileAccess.Read);
+        System.IO.FileStream f = new System.IO.FileStream(AppData.GetFullFilename("MachineList.xml"), System.IO.FileMode.Open, System.IO.FileAccess.Read);
         Machine[] list = (Machine[])x.Deserialize(f);
         f.Close();
 

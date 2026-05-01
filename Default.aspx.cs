@@ -77,7 +77,7 @@ namespace WakeOnLanLite
                     string host = ((GridView)e.CommandSource).Rows[rownum].Cells[1].Text;
 
                     // Basis RDP bestand uitlezen
-                    System.IO.TextReader t = new System.IO.StreamReader(HttpContext.Current.Server.MapPath(@"~\App_Data\BaseRDP.txt"));
+                    System.IO.TextReader t = new System.IO.StreamReader(AppData.GetFullFilename("BaseRDP.txt"));
                     string rdp = t.ReadToEnd();
                     t.Close();
 
