@@ -12,7 +12,7 @@ public class Machine
     private bool pinging;
     private int lastpingresult;
 
-    private void internalping()
+    private void internalPing()
     {
         string host;
         // hostname even kopieren met een 'lock'
@@ -46,6 +46,7 @@ public class Machine
 
     public Machine()
     {
+        // Required for serialization
     }
 
     public Machine(string NetbiosName, string MacAddress)
@@ -120,7 +121,7 @@ public class Machine
     {
         if (netbiosname.Length > 0)
         {
-            internalping();
+            internalPing();
         }
         return lastpingresult;
     }
@@ -134,7 +135,7 @@ public class Machine
     {
         if (netbiosname.Length > 0)
         {
-            var pingthread = new Thread(new ThreadStart(internalping));
+            var pingthread = new Thread(new ThreadStart(internalPing));
             pinging = true;
             pingthread.Start();
         }
@@ -143,14 +144,7 @@ public class Machine
 
 public class MachineList
 {
-    public MachineList()
-    {
-        //
-        // TODO: Add constructor logic here
-        //
-    }
-
-    public Machine[] getMachines()
+    public Machine[] GetMachines()
     {
         // Mogelijk machines uitlezen uit XML-bestand
         System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(typeof(Machine[]));

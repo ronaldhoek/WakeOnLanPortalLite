@@ -98,8 +98,8 @@
     <Compile Include="Site.master.designer.cs">
       <DependentUpon>Site.master</DependentUpon>
     </Compile>
-    <Content Include="App_Code\My.cs" />
-    <Content Include="App_Code\WolComputer.cs" />
+    <Compile Include="Shared\My.cs" />
+    <Compile Include="Shared\WolComputer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
