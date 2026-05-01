@@ -96,7 +96,7 @@ namespace WakeOnLanLite
                         try
                         {
                             // Write to temp file
-                            using (System.IO.TextWriter w = new System.IO.StreamWriter(tmpFile, false, System.Text.Encoding.UTF8))
+                            using (System.IO.TextWriter w = new System.IO.StreamWriter(tmpFile, false))
                             {
                                 w.Write(rdp);
                                 w.Flush();
