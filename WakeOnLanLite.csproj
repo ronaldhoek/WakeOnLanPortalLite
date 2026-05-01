@@ -116,7 +116,6 @@
     <Content Include="Site.master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="application.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
