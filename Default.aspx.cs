@@ -2,6 +2,8 @@
 using System.Web;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
+using System.IO;
+using WakeOnLanLite.Properties;
 
 namespace WakeOnLanLite
 {
@@ -77,13 +79,44 @@ namespace WakeOnLanLite
                     string host = ((GridView)e.CommandSource).Rows[rownum].Cells[1].Text;
 
                     // Basis RDP bestand uitlezen
-                    System.IO.TextReader t = new System.IO.StreamReader(AppData.GetFullFilename("BaseRDP.txt"));
-                    string rdp = t.ReadToEnd();
-                    t.Close();
+                    string rdp;
+                    using (System.IO.TextReader t = new System.IO.StreamReader(AppData.GetFullFilename("BaseRDP.txt")))
+                    {
+                        rdp = t.ReadToEnd();
+                        t.Close();
+                    }
 
                     // Speciale elementen vervangen
                     rdp = Regex.Replace(rdp, "%username%", HttpContext.Current.User.Identity.Name, RegexOptions.IgnoreCase);
                     rdp = Regex.Replace(rdp, "%hostname%", host, RegexOptions.IgnoreCase);
+
+                    if (!string.IsNullOrWhiteSpace(Settings.Default.RDPSignCertThumbprint))
+                    {
+                        var tmpFile = Path.GetTempFileName();
+                        try
+                        {
+                            // Write to temp file
+                            using (System.IO.TextWriter w = new System.IO.StreamWriter(tmpFile, false, System.Text.Encoding.UTF8))
+                            {
+                                w.Write(rdp);
+                                w.Flush();
+                                w.Close();
+                            }
+                            // Sign file
+                            RDPSigning.SignRDPFile(tmpFile, Settings.Default.RDPSignCertThumbprint);
+
+                            // Read signed file
+                            using (System.IO.TextReader t = new System.IO.StreamReader(tmpFile))
+                            {
+                                rdp = t.ReadToEnd();
+                                t.Close();
+                            }
+                        }
+                        finally
+                        {
+                            File.Delete(tmpFile);
+                        }
+                    }
 
                     Response.Clear();
                     Response.Buffer = true;
